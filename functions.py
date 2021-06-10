@@ -10,7 +10,8 @@ def DecToHex(decimal):
     return hexadecimal
 
 def FindNum(img):
-    size = img.sizenums = []
+    size = img.size
+    nums = []
     for i in range (size):
         try:
             if (size % i == 0):
