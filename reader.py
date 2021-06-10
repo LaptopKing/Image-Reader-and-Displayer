@@ -8,7 +8,7 @@ from functions import *
 image = ""
 
 try:
-    image = open(str(sys.argv[1]))
+    image = open(str(sys.argv[1]), 'rb')
 except Exception as e:
     print (e)
     print ("\n[-] Failed running the program!\n[*] Probably there is no image what you have given or you did not give a full image name!")

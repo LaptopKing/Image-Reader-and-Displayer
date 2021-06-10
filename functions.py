@@ -23,3 +23,10 @@ def FindNum(img):
         nums.remove(max(nums))
 
     return max(nums)
+
+def ImgRes(image):
+    print(image.read(100))
+
+image = open('test.jpg', 'rb')
+
+ImgRes(image)
