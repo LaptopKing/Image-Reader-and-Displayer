@@ -133,16 +133,28 @@ class ColorANSIRGB:
 
 color = ColorANSIRGB()
 
-X = 960
-Y = 960
+X = 713
+Y = 734
 
 img = np.fromfile(image, dtype=np.uint8, count = X * Y)
 
-num = FindNum(img)
+img.shape = (img.size // Y, Y)
 
-img.shape = (img.size // (num // 2), num // 2)
+img_hex = []
 
-for i in img:
-    for k in i:
-        print (color.rgb(DecToHex(k)), end=' ')
-    print()
+for j in img:
+    for k in j:
+        img_hex.append(DecToHex(k))
+        print (k, end=" ")
+    print ()
+    img_hex.append("FFFFFFFF")
+
+"""
+for i in range(len(img_hex)):
+    if (img_hex[i] == "FFFFFFFF"):
+        print (color.rgb("FFFFFFFF", "FFFFFFFF"))
+    elif (img_hex[i] == ""):
+        print (color.rgb("FFFFFFFF", "FFFFFFFF"), end="")
+    else:
+        print (color.rgb(img_hex[i], img_hex[i]), end="")
+"""

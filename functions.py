@@ -7,26 +7,18 @@ def DecToHex(decimal):
         hexadecimal = conversion_table[remainder] + hexadecimal
         decimal = decimal // 16
     
-    return hexadecimal
+    if (len(hexadecimal) == 1):
+        hexadecimal += hexadecimal
+
+    return hexadecimal  * 3
 
 def FindNum(img):
-    size = img.size
-    nums = []
-    for i in range (size):
-        try:
-            if (size % i == 0):
-                nums.append(i)
-        except Exception as e:
-            pass
-
-    for k in range (len(nums) // 2):
-        nums.remove(max(nums))
-
-    return max(nums)
+    return img.size // 2
 
 def ImgRes(image):
     print(image.read(100))
-
+"""
 image = open('test.jpg', 'rb')
 
 ImgRes(image)
+"""
