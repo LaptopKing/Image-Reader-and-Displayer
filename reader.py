@@ -132,6 +132,8 @@ class ColorANSIRGB:
         return self.reset() + style + _fg
 
 color = ColorANSIRGB()
+reset = color.reset()
+
 
 X = 713
 Y = 734
@@ -140,21 +142,20 @@ img = np.fromfile(image, dtype=np.uint8, count = X * Y)
 
 img.shape = (img.size // Y, Y)
 
-img_hex = []
-
 for j in img:
     for k in j:
-        img_hex.append(DecToHex(k))
-        print (k, end=" ")
-    print ()
-    img_hex.append("FFFFFFFF")
+        if (DecToHex(k) == ""):
+            print(color.rgb("00000000", "00000000"), end=" ")
+        else:
+            print(color.rgb(DecToHex(k), DecToHex(k)), end=" ")
+    print()
 
 """
 for i in range(len(img_hex)):
-    if (img_hex[i] == "FFFFFFFF"):
-        print (color.rgb("FFFFFFFF", "FFFFFFFF"))
+    if (img_hex[i] == ""):
+        print (color.rgb("00000000", "00000000"))
     elif (img_hex[i] == ""):
-        print (color.rgb("FFFFFFFF", "FFFFFFFF"), end="")
+        print (color.rgb("FFFFFFFF", "FFFFFFFF"), end=" ")
     else:
-        print (color.rgb(img_hex[i], img_hex[i]), end="")
+        print (color.rgb(img_hex[i], img_hex[i]), end=" ")
 """
