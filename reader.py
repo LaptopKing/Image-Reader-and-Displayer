@@ -3,16 +3,30 @@ import re
 import itertools
 from time import sleep
 import sys
+
+from numpy.core.numeric import asarray
+from numpy.lib.shape_base import expand_dims
 from functions import *
+from PIL import Image
 
 image = ""
 
 try:
-    image = open(str(sys.argv[1]), 'rb')
+    image = Image.open(str(sys.argv[1]))
 except Exception as e:
     print (e)
     print ("\n[-] Failed running the program!\n[*] Probably there is no image what you have given or you did not give a full image name!")
     exit()
+
+img = np.asarray(image)
+
+"""
+for i in img:
+    for k in i:
+        print(DecToHex(k))
+    exit()
+"""
+
 
 class ColorANSIRGB:
     def __init__(self):
@@ -134,28 +148,10 @@ class ColorANSIRGB:
 color = ColorANSIRGB()
 reset = color.reset()
 
-
-X = 713
-Y = 734
-
-img = np.fromfile(image, dtype=np.uint8, count = X * Y)
-
-img.shape = (img.size // Y, Y)
-
-for j in img:
-    for k in j:
-        if (DecToHex(k) == ""):
-            print(color.rgb("00000000", "00000000"), end=" ")
-        else:
+for i in img:
+    for k in i:
+        try:
+            print(color.rgb(DecToHex(k), DecToHex(k)), end=" ")
+        except Exception as e:
             print(color.rgb(DecToHex(k), DecToHex(k)), end=" ")
     print()
-
-"""
-for i in range(len(img_hex)):
-    if (img_hex[i] == ""):
-        print (color.rgb("00000000", "00000000"))
-    elif (img_hex[i] == ""):
-        print (color.rgb("FFFFFFFF", "FFFFFFFF"), end=" ")
-    else:
-        print (color.rgb(img_hex[i], img_hex[i]), end=" ")
-"""
