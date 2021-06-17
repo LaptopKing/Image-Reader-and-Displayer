@@ -8,44 +8,38 @@ from numpy.core.numeric import asarray
 from numpy.lib.shape_base import expand_dims
 from functions import *
 from PIL import Image
-import pyautogui
 import os
+
+have_display = bool(os.environ.get('DISPLAY', None))
 
 image = ""
 
 try:
-    image = Image.open(str(sys.argv[1]))
+    if (str(sys.argv[1]) == "--help"):
+        Help()
+        exit()
+    else:
+        image = Image.open(str(sys.argv[1]))
 except Exception as e:
     print (e)
+    print ("\n\n                   ^\nException is above | problem below |")
+    print ("                                   ˇ")
     print ("\n[-] Failed running the program!\n[*] Probably there is no image what you have given or you did not give a full image name!")
+    Help()
     exit()
 
-a,b = image.size
-
-image = image.resize((a, b // 2), resample=0, box=None)
-
-a,b = image.size
-
-image = image.resize((a // 2, b // 2), resample=0, box=None)
-
-a,b = image.size
-
-image = image.resize((a // 2, b // 2), resample=0, box=None)
-
-a,b = image.size
-
-image = image.resize((a // 2, b // 2), resample=0, box=None)
-img = np.asarray(image)
-
-"""
-for i in img:
-    for k in i:
-        print(DecToHex(k))
+try:
+    attempts = int(sys.argv[2])
+except Exception as e:
+    print (e)
+    print ("\n[-] Failed running the program!\n[*] Probably you entered string instead of an integer, please enter the number of times the program should downscale the original image!")
     exit()
-"""
 
-for g in range(12):
-    pyautogui.hotkey('ctrl', '-')
+
+
+img = np.asarray(ImageSize(image, attempts))
+
+ScaleToSmall(have_display)
 
 os.system('clear')
 
@@ -179,5 +173,4 @@ for i in img:
 
 input()
 
-for g in range(12):
-    pyautogui.hotkey('ctrl', '0')
+ScaleToOriginal(have_display)
