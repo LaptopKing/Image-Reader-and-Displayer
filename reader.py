@@ -8,6 +8,8 @@ from numpy.core.numeric import asarray
 from numpy.lib.shape_base import expand_dims
 from functions import *
 from PIL import Image
+import pyautogui
+import os
 
 image = ""
 
@@ -18,6 +20,21 @@ except Exception as e:
     print ("\n[-] Failed running the program!\n[*] Probably there is no image what you have given or you did not give a full image name!")
     exit()
 
+a,b = image.size
+
+image = image.resize((a, b // 2), resample=0, box=None)
+
+a,b = image.size
+
+image = image.resize((a // 2, b // 2), resample=0, box=None)
+
+a,b = image.size
+
+image = image.resize((a // 2, b // 2), resample=0, box=None)
+
+a,b = image.size
+
+image = image.resize((a // 2, b // 2), resample=0, box=None)
 img = np.asarray(image)
 
 """
@@ -27,6 +44,10 @@ for i in img:
     exit()
 """
 
+for g in range(12):
+    pyautogui.hotkey('ctrl', '-')
+
+os.system('clear')
 
 class ColorANSIRGB:
     def __init__(self):
@@ -155,3 +176,8 @@ for i in img:
         except Exception as e:
             print(color.rgb(DecToHex(k), DecToHex(k)), end=" ")
     print()
+
+input()
+
+for g in range(12):
+    pyautogui.hotkey('ctrl', '0')
