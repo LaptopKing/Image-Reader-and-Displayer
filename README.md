@@ -1,5 +1,23 @@
 # Image-Reader-and-Displayer
-This is a terminal based image viewer which you can use to intercept images on a headless server, like ubuntu server or something like that. It is still under developement
+## Basic disclaimer
+
+This is a terminal based image viewer which you can use to intercept images on a headless server, like ubuntu server or something like that. It is finished, probably won't get any features because it displays images very nicely.
+
+## Note
+
+Very high resolution images could crash the program, and even could lead to computer shutdown, so please be aware of that.
 
 
-For the "color_ansi_rgb.py" file all the credit goes to TheCodeTherapy who wrote the whole code for that file. The repository for his work: https://github.com/TheCodeTherapy/color_ansi_rgb/blob/master/color_ansi_rgb.py
+## Credit
+
+**For the "color_ansi_rgb.py" file all the credit goes to TheCodeTherapy who wrote the whole code for that file. The repository for his work: https://github.com/TheCodeTherapy/color_ansi_rgb/blob/master/color_ansi_rgb.py**
+
+## Installation and Setup
+
+- Git clone the repository
+- Run the following commands: ```pip3 install -r requirements.txt```
+- Try out the code with this command: ```python3 reader.py test2.jpeg 2```
+
+## License
+
+Free to use.
