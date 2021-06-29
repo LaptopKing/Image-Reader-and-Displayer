@@ -35,8 +35,6 @@ except Exception as e:
     print ("\n[-] Failed running the program!\n[*] Probably you entered string instead of an integer, please enter the number of times the program should downscale the original image!")
     exit()
 
-
-
 img = np.asarray(ImageSize(image, attempts))
 
 ScaleToSmall(have_display)
