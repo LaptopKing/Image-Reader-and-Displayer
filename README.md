@@ -19,7 +19,7 @@ Very high resolution images could crash the program, and even could lead to comp
 - Try out the code with this command: ```python3 reader.py test2.jpeg 2```
 
 ### Python3 installation
-**You can see how to download python3 on your linux machine with this link: ** ```https://www.csestack.org/install-python-on-linux/```
+**You can see how to download python3 on your linux machine with this link:** ```https://www.csestack.org/install-python-on-linux/```
 
 ## License
 
